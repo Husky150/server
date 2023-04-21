@@ -1244,6 +1244,7 @@ table.dragshadow td.size {
 
 /* Grid view toggle */
 #view-toggle {
+	position: fixed;
 	background-color: transparent;
 	border: none;
 	margin: 0;

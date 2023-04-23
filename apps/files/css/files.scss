@@ -1244,16 +1244,11 @@ table.dragshadow td.size {
 
 /* Grid view toggle */
 #view-toggle {
-	position: fixed;
 	background-color: transparent;
 	border: none;
 	margin: 0;
 	padding: 22px;
 	opacity: .5;
-	float: right;
-	right: calc(var(--default-grid-baseline) * 4);
-	top: calc(var(--header-height) + var(--default-grid-baseline));
-	z-index: 100;
 
 	&:hover,
 	&:focus,

@@ -220,7 +220,7 @@ class FilesReportPlugin extends ServerPlugin {
 		// gather all file ids matching filter
 		try {
 			$resultFileIds = $this->processFilterRulesForFileIDs($filterRules);
-			$resultNodes = $this->processFilterRulesForFileNodes($filterRules, $limit, $offset);
+			$resultNodes = $this->processFilterRulesForFileNodes($filterRules, $limit ?? null, $offset ?? null);
 		} catch (TagNotFoundException $e) {
 			throw new PreconditionFailed('Cannot filter by non-existing tag', 0, $e);
 		}
@@ -451,10 +451,10 @@ class FilesReportPlugin extends ServerPlugin {
 		return $results;
 	}
 
-	protected function wrapNode(\OCP\Files\File|\OCP\Files\Folder $node): File|Directory {
+	protected function wrapNode(\OCP\Files\Node $node): \Sabre\DAV\INode {
 		if ($node instanceof \OCP\Files\File) {
 			return new File($this->fileView, $node);
-		} else {
+		} elseif ($node instanceof \OCP\Files\Folder) {
 			return new Directory($this->fileView, $node);
 		}
 	}
